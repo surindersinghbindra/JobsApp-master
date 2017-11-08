@@ -104,7 +104,6 @@ public class JobDetailsActivity extends AppCompatActivity {
             });
         } else {
             btnApplyJob.setVisibility(View.GONE);
-
             btn_buy_premium_membership.setVisibility(View.GONE);
         }
 
@@ -233,10 +232,10 @@ public class JobDetailsActivity extends AppCompatActivity {
     private void setResult() {
         firstFavourite();
         jobTitle.setText((objBean.getJobName()));
-        companyTitle.setText(MyApp.getIsLogin() ? objBean.getJobCompanyName() : getString(R.string.buy_premium));
-        if (!MyApp.getIsLogin()) {
+        companyTitle.setText(!MyApp.getIsLogin() ? objBean.getJobCompanyName() : getString(R.string.buy_premium));
+       /* if (!MyApp.getIsLogin()) {
             companyTitle.setTextColor(ContextCompat.getColor(companyTitle.getContext(), R.color.red));
-        }
+        }*/
         jobDate.setText("Date Posted :- " + objBean.getJobDate());
         jobDesignation.setText("Designation :- " + objBean.getJobDesignation());
         jobAddress.setText("Address :- " + (MyApp.getIsLogin() ? objBean.getJobAddress() : getString(R.string.visible_to_premium)));

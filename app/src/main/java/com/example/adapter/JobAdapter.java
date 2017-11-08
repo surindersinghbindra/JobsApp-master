@@ -54,10 +54,10 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ItemRowHolder> {
     public void onBindViewHolder(final ItemRowHolder holder, final int position) {
         final ItemJob singleItem = dataList.get(position);
         holder.jobTitle.setText(singleItem.getJobName());
-        holder.companyTitle.setText(MyApp.getIsLogin() ? singleItem.getJobCompanyName() : holder.btn_buy_premium_membership.getContext().getResources().getString(R.string.buy_premium));
-        if (!MyApp.getIsLogin()) {
+        holder.companyTitle.setText(!MyApp.getIsLogin() ? singleItem.getJobCompanyName() : holder.btn_buy_premium_membership.getContext().getResources().getString(R.string.buy_premium));
+    /*    if (!MyApp.getIsLogin()) {
             holder.companyTitle.setTextColor(ContextCompat.getColor(holder.companyTitle.getContext(), R.color.red));
-        }
+        }*/
         holder.jobDate.setText("Date Posted :- " + singleItem.getJobDate());
         holder.jobDesignation.setText("Designation :- " + singleItem.getJobDesignation());
         holder.jobAddress.setText(MyApp.getIsLogin() ? singleItem.getJobAddress() : holder.btn_buy_premium_membership.getContext().getResources().getString(R.string.visible_to_premium));
